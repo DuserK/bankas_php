@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mano <span>mazasis</span> bankas</h1>
+    <?php require __DIR__ .'/menu.php'?>
 </body>
 </html>
