@@ -1,0 +1,7 @@
+h1 {
+  color: aquamarine;
+}
+h1 span {
+  color: crimson;
+  font-size: 10px;
+}
