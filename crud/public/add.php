@@ -56,7 +56,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Banko sąskaita</label>
-                        <input class="form-control" type="text" value="LT00 3500 0000 0000 0000" name="accountNumber" aria-label="readonly input example" readonly>
+                        <input class="form-control" type="text" value="LT00 3500 0000 0000 0000" name="accountNumber" aria-label="readonly input example" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Balansas</label>
+                        <input class="form-control" type="number" value="0" name="balance" aria-label="readonly input example" disabled>
                     </div>
                     <button type="submit" class="btn btn-outline-warning mt-4">Išsaugoti</button>
                 </form>

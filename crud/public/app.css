@@ -11982,4 +11982,44 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.content {
+  margin-top: 10px;
+  background-color: lightgray;
+  padding: 20px;
+  font-size: 15px;
+  color: #fff;
+  min-height: 80vh;
+  border-radius: 10px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.content .navbar {
+  border-radius: 10px;
+  background-color: #1EB7A6;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.content .info {
+  margin: 0px;
+  margin-bottom: 4px;
+  background-color: gray;
+  line-height: 2em;
+  padding: 0.4em 0;
+  border-radius: 10px;
+}
 
+.info-account {
+  margin: 2px 0px;
+  background-color: #fff;
+  line-height: 2em;
+  padding: 0.4em 0;
+  border-radius: 10px;
+  color: gray;
+}
+
+.navbar-brand {
+  color: #fff;
+}
+
+.nav-item {
+  color: #fff;
+}

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row info">
     <div class="col-2">Vardas</div>
     <div class="col-2">Pavardė</div>
     <div class="col-2">Asmens kodas</div>
