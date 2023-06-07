@@ -1,3 +1,25 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $accounts = file_get_contents(__DIR__.'/../accounts.ser');
+    $accounts = $accounts ? unserialize($accounts) : [];
+    $accounts[] = [
+    'name' => $_POST['name'],
+    'surname' => $_POST['surname'],
+    'personID' => $_POST['personID'],
+    'accountNumber' => $_POST['accountNumber'],
+    'id' => rand(100000000, 999999999)];
+
+    $accounts = serialize($accounts);
+    file_put_contents(__DIR__ . '/../accounts.ser', $accounts);
+    header('Location: ./');
+    die;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,22 +41,22 @@
                 Sukurti naują sąskaitą
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="./add.php" method="post">
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label" required>Vardas</label>
-                        <input class="form-control" type="text" value="">
+                        <label class="form-label" required>Vardas</label>
+                        <input class="form-control" name="name" type="text">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label" required>Pavardė</label>
-                        <input class="form-control" type="text" value="">
+                        <label class="form-label"required>Pavardė</label>
+                        <input class="form-control" name="surname" type="text">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label" required>Asmens kodas</label>
-                        <input class="form-control" type="text" value="">
+                        <label class="form-label" required>Asmens kodas</label>
+                        <input class="form-control"  name="personID"  type="text">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Asmens kodas</label>
-                        <input class="form-control" type="text" value="LT00 3500 0000 0000 0000" aria-label="readonly input example" readonly>
+                        <label class="form-label">Banko sąskaita</label>
+                        <input class="form-control" type="text" value="LT00 3500 0000 0000 0000" name="accountNumber" aria-label="readonly input example" readonly>
                     </div>
                     <button type="submit" class="btn btn-outline-warning mt-4">Išsaugoti</button>
                 </form>
