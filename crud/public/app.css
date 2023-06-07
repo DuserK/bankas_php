@@ -11982,10 +11982,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-h1, .h1 {
-  color: aquamarine;
+.listheader {
+  background-color: lightgrey;
+  padding: 20px;
+  font-size: 70px;
+  color: #fff;
+  min-height: 80vh;
+  border-radius: 10px;
 }
-h1 span, .h1 span {
-  color: crimson;
-  font-size: 10px;
+
+.col-2 {
+  font-size: 50px;
 }
