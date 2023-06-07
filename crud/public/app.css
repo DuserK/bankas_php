@@ -11982,15 +11982,4 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.listheader {
-  background-color: lightgrey;
-  padding: 20px;
-  font-size: 70px;
-  color: #fff;
-  min-height: 80vh;
-  border-radius: 10px;
-}
 
-.col-2 {
-  font-size: 50px;
-}
