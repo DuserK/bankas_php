@@ -12015,6 +12015,26 @@ textarea.form-control-lg {
   border-radius: 10px;
   color: gray;
 }
+.info-account .edit {
+  display: flex;
+  justify-content: space-between;
+}
+.info-account .edit .minus {
+  display: inline-block;
+  color: red;
+  margin: 0 10px;
+}
+.info-account .edit .plus {
+  display: inline-block;
+  color: green;
+  margin: 0 10px;
+}
+.info-account .edit .delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
 
 .navbar-brand {
   color: #fff;

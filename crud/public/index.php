@@ -1,7 +1,7 @@
 <?php
 
-$accounts = file_get_contents(__DIR__ . '/../accounts.ser');
-$accounts = $accounts ? unserialize($accounts) : [];
+$accounts = file_get_contents(__DIR__ . '/../accounts.json');
+$accounts = $accounts ? json_decode($accounts,1) : [];
 
 ?>
 
@@ -12,6 +12,8 @@ $accounts = $accounts ? unserialize($accounts) : [];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="/../3rd-party-css/3rd-party-css.css">
+    <script src="https://kit.fontawesome.com/6b553b78cb.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>  
     <title>Bankas bankelis</title>
 </head>
@@ -29,8 +31,8 @@ $accounts = $accounts ? unserialize($accounts) : [];
                     <div class="col-2"><?= $account['surname'] ?></div>
                     <div class="col-2"><?= $account['personID'] ?></div>
                     <div class="col-3"><?= $account['accountNumber'] ?></div>
-                    <div class="col-2"><?= $account['balance'] ?></div>
-                    <div class="col-1">Redaguoti</div>
+                    <div class="col-1" style = "text-align: right"><?= $account['balance'] ?> €</div>
+                    <div class="col-2 edit"><?php require __DIR__ .'/editbuttons.php'?></div>
                 </div>
             <?php endforeach ?>
         </ul>

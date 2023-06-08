@@ -1,6 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
 
-
 .content {
     margin-top: 10px;
     background-color: lightgray;
@@ -33,6 +32,26 @@
     padding: 0.4em 0;
     border-radius: 10px;
     color: gray;
+    .edit {
+        display: flex;
+        justify-content: space-between;
+        .minus {
+            display: inline-block;
+            color: red;
+            margin: 0 10px;
+        }
+        .plus {
+            display: inline-block;
+            color: green;
+            margin: 0 10px;
+        }
+        .delete {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gray;
+        }
+    }
 
 }
 .navbar-brand {

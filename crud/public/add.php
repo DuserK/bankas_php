@@ -2,17 +2,18 @@
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $accounts = file_get_contents(__DIR__.'/../accounts.ser');
-    $accounts = $accounts ? unserialize($accounts) : [];
+    $accounts = file_get_contents(__DIR__.'/../accounts.json');
+    $accounts = $accounts ? json_decode($accounts,1) : [];
     $accounts[] = [
     'name' => $_POST['name'],
     'surname' => $_POST['surname'],
     'personID' => $_POST['personID'],
-    'accountNumber' => $_POST['accountNumber'],
+    'accountNumber' => 'LT00 3500 0000 0000 0000',
+    'balance' => 0,
     'id' => rand(100000000, 999999999)];
 
-    $accounts = serialize($accounts);
-    file_put_contents(__DIR__ . '/../accounts.ser', $accounts);
+    $accounts = json_encode($accounts);
+    file_put_contents(__DIR__ . '/../accounts.json', $accounts);
     header('Location: ./');
     die;
 }
@@ -56,11 +57,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Banko sąskaita</label>
-                        <input class="form-control" type="text" value="LT00 3500 0000 0000 0000" name="accountNumber" aria-label="readonly input example" disabled>
+                        <input class="form-control" type="text" name="accountNumber" aria-label="readonly input example" hidden>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Balansas</label>
-                        <input class="form-control" type="number" value="0" name="balance" aria-label="readonly input example" disabled>
+                        <input class="form-control" type="number" name="balance" aria-label="readonly input example" hidden>
                     </div>
                     <button type="submit" class="btn btn-outline-warning mt-4">Išsaugoti</button>
                 </form>
