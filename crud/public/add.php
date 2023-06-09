@@ -1,4 +1,24 @@
 <?php
+    function generateLithuanianIBAN() {
+        $countryCode = 'LT';
+        $bankAccountNumber = sprintf('%014d', mt_rand(0, 99999999999999));
+    
+        $accountNumber = $countryCode . '00' . $bankAccountNumber;
+    
+        // Calculate the checksum digits
+        $ibanDigits = str_split($accountNumber);
+        $checksum = 0;
+        foreach ($ibanDigits as $digit) {
+            $checksum = ($checksum * 10 + intval($digit)) % 97;
+        }
+        $checksumDigits = sprintf('%02d', 98 - $checksum);
+    
+        // Replace the placeholder checksum with the calculated checksum digits
+        $accountNumber = substr_replace($accountNumber, $checksumDigits, 2, 2);
+    
+        return $accountNumber;
+    }
+    $accountNumber = generateLithuanianIBAN();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -8,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     'name' => $_POST['name'],
     'surname' => $_POST['surname'],
     'personID' => $_POST['personID'],
-    'accountNumber' => 'LT00 3500 0000 0000 0000',
+    'accountNumber' => $_POST['accountNumber'],
     'balance' => 0,
     'id' => rand(100000000, 999999999)];
 
@@ -57,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Banko sąskaita</label>
-                        <input class="form-control" type="text" name="accountNumber" aria-label="readonly input example" hidden>
+                        <input class="form-control" type="text" name="accountNumber" aria-label=" input example" value="<?= $accountNumber?>" readonly>
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="number" name="balance" aria-label="readonly input example" hidden>

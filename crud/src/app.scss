@@ -1,12 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
 .content {
-    margin-top: 10px;
+    margin-top: 2.5vh;
     background-color: lightgray;
     padding: 20px;
     font-size: 15px;
     color: #fff;
-    min-height: 80vh;
+    min-height: 95vh;
     border-radius: 10px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     .navbar {
@@ -34,7 +34,7 @@
     color: gray;
     .edit {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         .minus {
             display: inline-block;
             color: red;
@@ -50,6 +50,8 @@
             justify-content: center;
             align-items: center;
             color: gray;
+            border: none;
+            background-color: transparent;
         }
     }
 

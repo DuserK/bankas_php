@@ -11983,12 +11983,12 @@ textarea.form-control-lg {
   }
 }
 .content {
-  margin-top: 10px;
+  margin-top: 2.5vh;
   background-color: lightgray;
   padding: 20px;
   font-size: 15px;
   color: #fff;
-  min-height: 80vh;
+  min-height: 95vh;
   border-radius: 10px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -12017,7 +12017,7 @@ textarea.form-control-lg {
 }
 .info-account .edit {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .info-account .edit .minus {
   display: inline-block;
@@ -12034,6 +12034,8 @@ textarea.form-control-lg {
   justify-content: center;
   align-items: center;
   color: gray;
+  border: none;
+  background-color: transparent;
 }
 
 .navbar-brand {
