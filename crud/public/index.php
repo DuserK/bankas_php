@@ -2,7 +2,7 @@
 
 $accounts = file_get_contents(__DIR__ . '/../accounts.json');
 $accounts = $accounts ? json_decode($accounts,1) : [];
-
+$error =$_GET['error'] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +36,7 @@ $accounts = $accounts ? json_decode($accounts,1) : [];
                 </div>
             <?php endforeach ?>
         </ul>
+    <div><?php require __DIR__ .'/errors.php'?></div>
     </div>
     </div>
 

@@ -1,7 +1,7 @@
 <?php
     function generateLithuanianIBAN() {
         $countryCode = 'LT';
-        $bankAccountNumber = sprintf('%014d', mt_rand(0, 99999999999999));
+        $bankAccountNumber = sprintf('%016d', mt_rand(0, 99999999999999));
     
         $accountNumber = $countryCode . '00' . $bankAccountNumber;
     
@@ -21,7 +21,7 @@
     $accountNumber = generateLithuanianIBAN();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    
     $accounts = file_get_contents(__DIR__.'/../accounts.json');
     $accounts = $accounts ? json_decode($accounts,1) : [];
     $accounts[] = [
@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="mb-3">
                         <label class="form-label" required>Asmens kodas</label>
-                        <input class="form-control"  name="personID"  type="text">
+                        <input class="form-control"  name="personID"  type="number" minlength="11" maxlength="11">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Banko sąskaita</label>

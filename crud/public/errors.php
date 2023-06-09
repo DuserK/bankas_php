@@ -9,7 +9,9 @@ switch ($error) {
       </div>';
         break;
     case 2:
-        echo "i equals 2";
+        echo '<div class="alert alert-danger" role="alert">
+        Sąskaita nėra tuščia
+      </div>';
         break;
 }
 ?>
