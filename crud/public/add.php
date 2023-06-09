@@ -13,24 +13,41 @@
     $accountNumber = accountNumberGen();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
+    /// validacijos
+    if (strlen($_POST['name'])<3) {
+        header('Location: ./add.php?error=5');
+        die;
+    } 
+    if (strlen($_POST['surname'])<3) {
+        header('Location: ./add.php?error=6');
+        die;
+    } 
     $accounts = file_get_contents(__DIR__.'/../accounts.json');
     $accounts = $accounts ? json_decode($accounts,1) : [];
-    $accounts[] = [
-    'name' => $_POST['name'],
-    'surname' => $_POST['surname'],
-    'personID' => $_POST['personID'],
-    'accountNumber' => $_POST['accountNumber'],
-    'balance' => 0,
-    'id' => rand(100000000, 999999999)];
-
-    $accounts = json_encode($accounts);
-    file_put_contents(__DIR__ . '/../accounts.json', $accounts);
-    header('Location: ./');
-    die;
+    
+    foreach ($accounts as $a) {
+        if($a['personID'] === $_POST['personID']) {
+            header('Location: ./add.php?error=7');
+            die;
+        } 
+    }
+         $accounts[] = [
+            'name' => $_POST['name'],
+            'surname' => $_POST['surname'],
+            'personID' => $_POST['personID'],
+            'accountNumber' => $_POST['accountNumber'],
+            'balance' => 0,
+            'id' => rand(100000000, 999999999)];
+        
+            $accounts = json_encode($accounts);
+            file_put_contents(__DIR__ . '/../accounts.json', $accounts);
+            header('Location: ./add.php?error=8');
+            die;
+                
+    
 }
 
-
+$error =$_GET['error'] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +61,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Pridėti sąskaitą</title>
 </head>
 <body>
+<div class="container content">
     <?php require __DIR__ .'/menu.php'?>
-
+<div>
 <div class="container">
   <div class="row  justify-content-md-center">
     <div class="col-lg-6 col-12">
@@ -74,7 +92,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="mb-3">
                         <input class="form-control" type="number" name="balance" aria-label="readonly input example" hidden>
                     </div>
-                    <button type="submit" class="btn btn-outline-warning mt-4">Išsaugoti</button>
+                    <div><?php require __DIR__ .'/errors.php'?></div>
+                    <button type="button" class="btn btn-secondary mt-4">
+                    <a class="buttonLink" href="./"> Grįžti</a>
+                    </button>
+                    <button type="submit" class="btn btn-primary mt-4">Išsaugoti</button>
                 </form>
             </div>
         </div>
