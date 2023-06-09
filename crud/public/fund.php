@@ -5,6 +5,12 @@ $accounts = file_get_contents(__DIR__.'/../accounts.json');
 $accounts = $accounts ? json_decode($accounts, 1) : [];
 $id =(int)$_GET['id'];
 
+foreach ($accounts as $a) {
+    if($a['id'] == $id) {
+        $p = $a;
+    }
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     foreach ($accounts as &$a) {
@@ -44,6 +50,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 Pridėti lėšų
             </div>
             <div class="card-body">
+                <ul class="list-group mb-3">
+                    <li class="list-group-item">Vardas: <?=$p['name']?></li>
+                    <li class="list-group-item">Pavardė: <?=$p['surname']?></li>
+                    <li class="list-group-item">Asmens kodas: <?=$p['personID']?></li>
+                    <li class="list-group-item">Sąskaitos numeris: <?=$p['accountNumber']?></li>
+                    <li class="list-group-item">Likutis: <?=$p['balance']?> €</li>
+                </ul>
                 <form action="./fund.php?id=<?=$id?>" method="post">
                     <div class="mb-3">
                         <label class="form-label" required>Įveskite sumą</label>

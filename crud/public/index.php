@@ -12,7 +12,6 @@ $error =$_GET['error'] ?? 0;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="/../3rd-party-css/3rd-party-css.css">
     <script src="https://kit.fontawesome.com/6b553b78cb.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>  
     <title>Bankas bankelis</title>
