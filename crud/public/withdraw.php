@@ -17,6 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($a['id'] == $id) {
             if ($a['balance'] > $_POST['fund']) {
                 $a['balance'] -= $_POST['fund'];
+                header('Location: ./withdraw.php?id='.$id.'&error=4');
             } else {
                 header('Location: ./withdraw.php?id='.$id.'&error=1');
                 die;
@@ -27,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/../accounts.json', $accounts);
-    header('Location: ./');
+   
     die;
     
 }
@@ -70,6 +71,9 @@ $error =$_GET['error'] ?? 0;
                         <input class="form-control" name="fund" type="number" required>
                     </div>
                     <div><?php require __DIR__ .'/errors.php'?></div>
+                    <button type="button" class="btn btn-secondary mt-4">
+                    <a class="buttonLink" href="./"> Grįžti</a>
+                    </button>
                     <button type="submit" class="btn btn-danger mt-4">Nuskaičiuoti lėšas</button>
                 </form>
             </div>

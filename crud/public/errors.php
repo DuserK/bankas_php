@@ -13,5 +13,15 @@ switch ($error) {
         Sąskaita nėra tuščia
       </div>';
         break;
+    case 3:
+        echo '<div class="alert alert-success" role="alert">
+        Lėšos pridėtos
+      </div>';
+        break;
+    case 4:
+        echo '<div class="alert alert-success" role="alert">
+        Lėšos sėkmingai nuskaičiuotos
+      </div>';
+        break;
 }
 ?>

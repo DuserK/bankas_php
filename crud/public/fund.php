@@ -16,18 +16,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($accounts as &$a) {
         if($a['id'] == $id) {
             $a['balance'] += $_POST['fund'];
-
+            header('Location: ./fund.php?id='.$id.'&error=3');
         }
     }
     unset($a);
 
     $accounts = json_encode($accounts);
     file_put_contents(__DIR__.'/../accounts.json', $accounts);
-    header('Location: ./');
     die;
     
 }
-
+$error =$_GET['error'] ?? 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +39,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Pridėti lėšų</title>
 </head>
 <body>
+<div class="container content">
     <?php require __DIR__ .'/menu.php'?>
-
+<div>
 <div class="container">
     <div class="row  justify-content-md-center">
     <div class="col-lg-6 col-12">
@@ -62,6 +62,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label class="form-label" required>Įveskite sumą</label>
                         <input class="form-control" name="fund" type="number">
                     </div>
+                    <div><?php require __DIR__ .'/errors.php'?></div>
+                    <button type="button" class="btn btn-secondary mt-4">
+                    <a class="buttonLink" href="./"> Grįžti</a>
+                    </button>
                     <button type="submit" class="btn btn-success mt-4">Pridėti lėšas</button>
                 </form>
             </div>

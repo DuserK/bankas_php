@@ -11988,7 +11988,6 @@ textarea.form-control-lg {
   padding: 20px;
   font-size: 15px;
   color: #fff;
-  min-height: 95vh;
   border-radius: 10px;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
@@ -12042,6 +12041,11 @@ textarea.form-control-lg {
   color: #fff;
 }
 
-.nav-item {
+.nav-item .nav-link {
+  color: #fff;
+}
+
+.buttonLink {
+  text-decoration: none;
   color: #fff;
 }

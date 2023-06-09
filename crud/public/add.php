@@ -1,24 +1,16 @@
 <?php
-    function generateLithuanianIBAN() {
-        $countryCode = 'LT';
-        $bankAccountNumber = sprintf('%016d', mt_rand(0, 99999999999999));
-    
-        $accountNumber = $countryCode . '00' . $bankAccountNumber;
-    
-        // Calculate the checksum digits
-        $ibanDigits = str_split($accountNumber);
-        $checksum = 0;
-        foreach ($ibanDigits as $digit) {
-            $checksum = ($checksum * 10 + intval($digit)) % 97;
-        }
-        $checksumDigits = sprintf('%02d', 98 - $checksum);
-    
-        // Replace the placeholder checksum with the calculated checksum digits
-        $accountNumber = substr_replace($accountNumber, $checksumDigits, 2, 2);
-    
-        return $accountNumber;
+    function accountNumberGen () {
+        $iban = '';
+        $cn = sprintf('%02d', mt_rand(0, 99));
+        $bn = '3500 0';
+        $un1 = sprintf('%03d', mt_rand(0, 999));
+        $un2 = sprintf('%04d', mt_rand(0, 9999));
+        $un3 = sprintf('%04d', mt_rand(0, 9999));
+        $iban = "LT$cn $bn$un1 $un2 $un3";
+        return $iban;
     }
-    $accountNumber = generateLithuanianIBAN();
+
+    $accountNumber = accountNumberGen();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
