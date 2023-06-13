@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     foreach ($accounts as &$a) {
         if($a['id'] == $id) {
-            if ($a['balance'] > $_POST['fund']) {
+            if ($a['balance'] >= $_POST['fund']) {
                 $a['balance'] -= $_POST['fund'];
                 header('Location: ./withdraw.php?id='.$id.'&error=4');
             } else {
